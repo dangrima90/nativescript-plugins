@@ -1,0 +1,18 @@
+{
+  "main": "./src/main.ts",
+  "dependencies": {
+    "@nativescript/core": "file:../../node_modules/@nativescript/core",
+    "@wuilmerj24/country-code": "file:../../dist/packages/country-code",
+    "@wuilmerj24/launch-navigator": "file:../../dist/packages/launch-navigator",
+    "@wuilmerj24/screen-orientation": "file:../../dist/packages/screen-orientation",
+    "@wuilmerj24/time-range": "file:../../dist/packages/time-range",
+    "@wuilmerj24/gallery-view": "file:../../dist/packages/gallery-view",
+    "@wuilmerj24/sqlite-secure": "file:../../dist/packages/sqlite-secure",
+    "@wuilmerj24/signalr": "file:../../dist/packages/signalr",
+    "@wuilmerj24/store-update": "file:../../dist/packages/store-update"
+  },
+  "devDependencies": {
+    "@nativescript/android": "~8.7.0",
+    "@nativescript/ios": "~8.7.0"
+  }
+}

@@ -1,0 +1,28 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:gv="@wuilmerj24/gallery-view" navigatingTo="navigatingTo" class="page">
+    <Page.actionBar>
+        <ActionBar title="gallery-view" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout>
+      <gv:GalleryView 
+          width="100%" 
+          height="100%"
+          debug="true"
+          language="es"
+          file_type="image"
+          showHeader="true"
+          bgColorHeader="gray"
+          textcolorHeader="white"
+          maxItemSelect="5"
+          showFooter="true"
+          bgColorFooter="gray"
+          textColorFooter="white"
+          edit="true"
+          preview="true"
+          loaded="onLoad"
+          errorEvent="onError"
+          scroll="onScroll"
+          click="onClick"
+      />
+    </StackLayout>
+</Page>

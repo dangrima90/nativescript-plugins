@@ -1,0 +1,17 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
+    <Page.actionBar>
+        <ActionBar title="store-update" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout class="p-20">
+        <ScrollView class="h-full">
+          <StackLayout>
+            <Button text="getVersions" tap="getVersions" class="btn btn-primary"/>
+            <Button text="getVersionnube" tap="getVersionsNube" class="btn btn-primary"/>
+            <Button text="checkVersion" tap="checkVersion" class="btn btn-primary"/>
+            <Button text="checkUpdateNativeFN" tap="checkUpdateNativeFN" class="btn btn-primary"/>
+
+          </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</Page>

@@ -1,0 +1,22 @@
+// Add your native dependencies here:
+
+// Uncomment to add recyclerview-v7 dependency
+//dependencies {
+//	compile 'com.android.support:recyclerview-v7:+'
+//}
+
+android {
+  compileSdkVersion 34
+  defaultConfig {
+    minSdkVersion 21
+    targetSdkVersion 34
+    generatedDensities = []
+  }
+  aaptOptions {
+    additionalParameters "--no-version-vectors"
+  }
+  compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}

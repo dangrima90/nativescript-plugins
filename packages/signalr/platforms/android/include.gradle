@@ -1,0 +1,17 @@
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.microsoft.signalr:signalr:8.0.0'
+    implementation 'org.slf4j:slf4j-jdk14:1.7.25'
+    implementation "io.reactivex.rxjava3:rxjava:3.1.8"
+}
+
+android{
+    compileSdkVersion 34
+    defaultConfig {
+        multiDexEnabled true
+    }
+	compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}

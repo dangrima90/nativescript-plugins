@@ -1,0 +1,15 @@
+dependencies {
+    implementation 'net.zetetic:sqlcipher-android:4.6.0@aar'
+    implementation 'androidx.sqlite:sqlite:2.3.1'
+}
+
+android{
+    compileSdkVersion 34
+    defaultConfig {
+        multiDexEnabled true
+    }
+	compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
