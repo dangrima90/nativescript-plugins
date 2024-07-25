@@ -6,29 +6,32 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   demos = [
-    {
-      name: 'country-code',
-    },
-    {
-      name: 'gallery-view',
-    },
-    {
-      name: 'launch-navigator',
-    },
-    {
-      name: 'screen-orientation',
-    },
-    {
-      name: 'signalr',
-    },
-    {
-      name: 'sqlite-secure',
-    },
-    {
-      name: 'store-update',
-    },
-    {
-      name: 'time-range',
-    },
-  ];
+	{
+		name: 'country-code'
+	},
+	{
+		name: 'gallery-view'
+	},
+	{
+		name: 'launch-navigator'
+	},
+	{
+		name: 'screen-orientation'
+	},
+	{
+		name: 'signalr'
+	},
+	{
+		name: 'sqlite-secure'
+	},
+	{
+		name: 'store-update'
+	},
+	{
+		name: 'time-range'
+	},
+	{
+		name: 'url-preview'
+	}
+];
 }

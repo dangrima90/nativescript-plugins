@@ -12,7 +12,8 @@
     "@wuilmerj24/signalr": "file:../../packages/signalr",
     "@wuilmerj24/sqlite-secure": "file:../../packages/sqlite-secure",
     "@wuilmerj24/store-update": "file:../../packages/store-update",
-    "@wuilmerj24/time-range": "file:../../packages/time-range"
+    "@wuilmerj24/time-range": "file:../../packages/time-range",
+    "@wuilmerj24/url-preview": "file:../../packages/url-preview"
   },
   "devDependencies": {
     "@nativescript/android": "~8.7.0",

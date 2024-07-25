@@ -9,6 +9,7 @@ export declare class Signalr extends SignalrCommon {
   disconnect(): void;
   conectionId(): string;
   on(event: string, callback: (...payload: any[]) => void): () => void;
+  onClose(callback: () => void): () => void;
   off(event: string): void;
   emit(event: string, ...payload: any[]): void;
 }

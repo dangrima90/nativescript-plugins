@@ -9,7 +9,8 @@
     "@wuilmerj24/gallery-view": "file:../../dist/packages/gallery-view",
     "@wuilmerj24/sqlite-secure": "file:../../dist/packages/sqlite-secure",
     "@wuilmerj24/signalr": "file:../../dist/packages/signalr",
-    "@wuilmerj24/store-update": "file:../../dist/packages/store-update"
+    "@wuilmerj24/store-update": "file:../../dist/packages/store-update",
+    "@wuilmerj24/url-preview": "file:../../dist/packages/url-preview"
   },
   "devDependencies": {
     "@nativescript/android": "~8.7.0",

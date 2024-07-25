@@ -74,4 +74,10 @@ export class Signalr extends SignalrCommon {
     if (this.signalrController != null || this.signalrController != undefined) {
     }
   }
+
+  onClose(callback: () => void): () => void {
+    return () => {
+
+    }
+  }
 }

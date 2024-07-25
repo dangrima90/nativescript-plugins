@@ -12,7 +12,7 @@ const signalr: Signalr = new Signalr();
 export async function connect() {
   await signalr
     .create({
-      url: 'url',
+      url: 'http://eaconnectionmobile.azurewebsites.net/ServicesHub',
       shouldSkipNegotiate: false,
       headers: [{ name: 'Content-Type', value: 'application/json' }],
       transport: TypeTransport.WEBSOCKETS,
@@ -20,6 +20,9 @@ export async function connect() {
     })
     .then((res) => {
       console.log('finish ', res);
+      signalr.onClose(()=>{
+        alert("se desconecto "+signalr.isConnected)
+      })
     })
     .catch((err) => {
       console.log('error ', err);

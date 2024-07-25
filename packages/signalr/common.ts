@@ -10,4 +10,5 @@ export abstract class SignalrCommon {
   abstract emit(event: string, ...payload: any[]): void;
   abstract on(event: string, callback: (...payload) => void): void;
   abstract off(event: string): void;
+  abstract onClose(callback: () => void): () => void;
 }
