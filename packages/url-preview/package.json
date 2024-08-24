@@ -1,6 +1,6 @@
 {
   "name": "@wuilmerj24/url-preview",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Add a plugin description",
   "main": "index",
   "types": "index.d.ts",

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { EStateConn } from './enums/states_conn.enums';
 import { OptionsConnect } from './interfaces/conn_options.interface';
 

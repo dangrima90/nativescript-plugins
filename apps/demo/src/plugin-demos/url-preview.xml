@@ -1,14 +1,18 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:up="@wuilmerj24/url-preview" navigatingTo="navigatingTo" class="page">
     <Page.actionBar>
         <ActionBar title="url-preview" icon="" class="action-bar">
         </ActionBar>
     </Page.actionBar>
-    <StackLayout class="p-20">
-        <ScrollView class="h-full">
-          <StackLayout>
-            <Button text="Test url-preview" tap="{{ testIt }}" class="btn btn-primary"/>
+    <StackLayout>
+      
+      <up:UrlPreview url="https://www.geeksforgeeks.org/flutter-showing-url-preview/" bgColor="green" titleTextColor="blue" descriptionTextColor="red" view="r" borderRadiusImage="10" loadingColor="yellow" borderRadius="10"/>
 
-          </StackLayout>
-        </ScrollView>
+      <!-- <up:UrlPreview url="https://github.com/wuilmerj24/nativescript-plugins" bgColor="green" titleTextColor="blue" descriptionTextColor="red" view="r" borderRadiusImage="10" loadingColor="yellow" borderRadius="10"/> -->
+
+      <!-- <up:UrlPreview url="https://www.facebook.com/share/v/EXLnx2W2KALFsPPV/" bgColor="green" titleTextColor="blue" descriptionTextColor="red" view="r" borderRadiusImage="10" loadingColor="yellow" borderRadius="10"/> -->
+
+      <!-- <up:UrlPreview url="https://stackoverflow.com/questions/70843762/is-there-any-way-to-create-a-preview-of-url-in-android-studio" bgColor="green" titleTextColor="blue" descriptionTextColor="red" view="r" borderRadiusImage="10" loadingColor="yellow" borderRadius="10"/> -->
+
+      <!-- <up:UrlPreview width="30" height="30" url="https://youtu.be/NbdRLyixJpc?si=IAJJK40NT42jakwI" bgColor="green" titleTextColor="blue" descriptionTextColor="red" view="rv" borderRadiusImage="10" loadingColor="yellow" borderRadius="10"/> -->
     </StackLayout>
 </Page>

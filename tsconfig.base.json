@@ -61,6 +61,9 @@
       ],
       "@wuilmerj24/url-preview": [
         "packages/url-preview/index.d.ts"
+      ],
+      "@wuilmerj24/url-preview/angular": [
+        "packages/url-preview/angular/index.ts"
       ]
     }
   },

@@ -16,6 +16,7 @@ npm install @wuilmerj24/signalr
 | conectionId | | ```string``` |
 | on | eventName:```sting```,```callback: (...payload: any[])``` | ```void``` |
 | off | eventName:```sting``` | ```void``` |
+| onClose | | Fired close connection |
 | emit | eventName:```sting```,```callback: (...payload: any[])``` | ```void``` |
 | isConnected | | ```EStateConn``` |
 
@@ -65,6 +66,9 @@ export async function connect() {
     })
     .then((res) => {
       console.log('finish ', res);
+      signalr.onClose(() => {
+        console.log();
+      });
     })
     .catch((err) => {
       console.log('error ', err);
