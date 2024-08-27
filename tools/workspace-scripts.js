@@ -145,6 +145,13 @@ module.exports = {
 					description: '@wuilmerj24/url-preview: Build',
 				},
 			},
+			// @wuilmerj24/photo-editor
+			'photo-editor': {
+				build: {
+					script: 'nx run photo-editor:build.all',
+					description: '@wuilmerj24/photo-editor: Build',
+				},
+			},
 			'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -202,6 +209,10 @@ module.exports = {
 			'url-preview': {
 				script: 'nx run url-preview:focus',
 				description: 'Focus on @wuilmerj24/url-preview',
+			},
+			'photo-editor': {
+				script: 'nx run photo-editor:focus',
+				description: 'Focus on @wuilmerj24/photo-editor',
 			},
 			reset: {
         script: 'nx g @wuilmerj24/plugin-tools:focus-packages',

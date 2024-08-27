@@ -64,6 +64,9 @@
       ],
       "@wuilmerj24/url-preview/angular": [
         "packages/url-preview/angular/index.ts"
+      ],
+      "@wuilmerj24/photo-editor": [
+        "packages/photo-editor/index.d.ts"
       ]
     }
   },
