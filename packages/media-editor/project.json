@@ -1,0 +1,73 @@
+{
+  "name": "media-editor",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/media-editor",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/media-editor",
+        "tsConfig": "packages/media-editor/tsconfig.json",
+        "packageJson": "packages/media-editor/package.json",
+        "main": "packages/media-editor/index.d.ts",
+        "assets": [
+          "packages/media-editor/*.md",
+          "packages/media-editor/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/media-editor/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node tools/scripts/build-finish.ts media-editor"
+        ],
+        "parallel": false
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/packages/media-editor"
+      ],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx g @nativescript/plugin-tools:focus-packages media-editor"
+        ],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/media-editor/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
