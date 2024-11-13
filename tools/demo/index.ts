@@ -2,6 +2,7 @@ export * from './utils';
 export * from './country-code';
 export * from './gallery-view';
 export * from './launch-navigator';
+export * from './media-editor';
 export * from './screen-orientation';
 export * from './signalr';
 export * from './sqlite-secure';

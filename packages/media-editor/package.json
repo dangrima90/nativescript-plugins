@@ -1,6 +1,6 @@
 {
-  "name": "@wuilmerj24/signalr",
-  "version": "1.0.7",
+  "name": "@wuilmerj24/media-editor",
+  "version": "1.0.0",
   "description": "Add a plugin description",
   "main": "index",
   "types": "index.d.ts",

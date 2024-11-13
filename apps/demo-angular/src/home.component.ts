@@ -16,6 +16,9 @@ export class HomeComponent {
 		name: 'launch-navigator'
 	},
 	{
+		name: 'media-editor'
+	},
+	{
 		name: 'screen-orientation'
 	},
 	{

@@ -145,11 +145,11 @@ module.exports = {
 					description: '@wuilmerj24/url-preview: Build',
 				},
 			},
-			// @wuilmerj24/photo-editor
-			'photo-editor': {
+			// @wuilmerj24/media-editor
+			'media-editor': {
 				build: {
-					script: 'nx run photo-editor:build.all',
-					description: '@wuilmerj24/photo-editor: Build',
+					script: 'nx run media-editor:build.all',
+					description: '@wuilmerj24/media-editor: Build',
 				},
 			},
 			'build-all': {
@@ -210,9 +210,9 @@ module.exports = {
 				script: 'nx run url-preview:focus',
 				description: 'Focus on @wuilmerj24/url-preview',
 			},
-			'photo-editor': {
-				script: 'nx run photo-editor:focus',
-				description: 'Focus on @wuilmerj24/photo-editor',
+			'media-editor': {
+				script: 'nx run media-editor:focus',
+				description: 'Focus on @wuilmerj24/media-editor',
 			},
 			reset: {
         script: 'nx g @wuilmerj24/plugin-tools:focus-packages',

@@ -66,7 +66,7 @@ export class Signalr extends SignalrCommon {
 
   emit(event: string, ...payload: any[]): void {
     if (this.signalrController != null || this.signalrController != undefined) {
-      this.signalrController.setSendWithEventNameData(event, payload);
+      this.signalrController.setSendWithEventNameDataCompletion(event, payload,(p1:any)=>{});
     }
   }
 

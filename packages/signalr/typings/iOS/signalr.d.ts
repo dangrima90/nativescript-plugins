@@ -1,4 +1,5 @@
 declare class SignalrForNs extends NSObject {
+
   static alloc(): SignalrForNs; // inherited from NSObject
 
   static new(): SignalrForNs; // inherited from NSObject
@@ -7,7 +8,7 @@ declare class SignalrForNs extends NSObject {
 
   onInitCallBack: (p1: string, p2: string) => void;
 
-  constructor(o: { url: string; accessToken: string; shouldSkipNegotiate: boolean; headers: NSArray<any> | any[]; handshakeResponseTimeout: number; keepAliveInterval: number; serverTimeout: number; transport: string; reconnect: boolean });
+  constructor(o: { url: string; accessToken: string; shouldSkipNegotiate: boolean; headers: NSArray<any> | any[]; handshakeResponseTimeout: number; keepAliveInterval: number; serverTimeout: number; transport: string; reconnect: boolean; });
 
   convertToNSArray(array: NSArray<any> | any[]): NSArray<any>;
 
@@ -23,7 +24,7 @@ declare class SignalrForNs extends NSObject {
 
   setOnEventoWithEventNameCompletion(eventName: string, completion: (p1: any) => void): void;
 
-  setSendWithEventNameData(eventName: string, data: any): void;
+  setSendWithEventNameDataCompletion(eventName: string, data: any, completion: (p1: any) => void): void;
 
   startConn(): void;
 }

@@ -22,27 +22,28 @@ export function getVersionName(): string {
 
 export function getVersionNube(): Promise<any> {
   return new Promise(async (rs, rj) => {
-    const url: string = `https://itunes.apple.com/lookup?id=${NSBundle.mainBundle.bundleIdentifier}&country=${NSLocale.currentLocale.countryCode}&${new Date().getTime()}`;
-    await Http.request({
-      url: url,
-      method: 'GET',
-    })
-      .then((response) => {
-        const statusCode = response.statusCode;
-        if (statusCode === 200) {
-          let version = '';
-          const data = response.content.toJSON();
-          version = data.results[0].version;
-          rs(version);
-        }
-        rj(null);
+    const url: string = `https://itunes.apple.com/lookup?bundleId=${NSBundle.mainBundle.bundleIdentifier}&country=${NSLocale.currentLocale.countryCode}&${new Date().getTime()}`;
+      await Http.request({
+        url: url,
+        method: 'GET',
       })
-      .catch((err) => {
-        rj(err);
-      })
-      .finally(() => {
-        rj(null);
-      });
+        .then((response) => {
+          const statusCode = response.statusCode;
+          if (statusCode === 200) {
+            let version = '';
+            const data = response.content.toJSON();
+            version = data.results[0].version;
+            const appStoreID = data.results[0].trackId;
+            rs({ version: version, appStoreID: appStoreID });
+          }
+          rj(null);
+        })
+        .catch((err) => {
+          rj(err);
+        })
+        .finally(() => {
+          rj(null);
+        });
   });
 }
 
@@ -65,18 +66,18 @@ export function getVersionNube(): Promise<any> {
 export function checkUpdate(forceUpdate: boolean, okTextButton?: string, cancelTextButton?: string, message?: string, openAppStore?: boolean): Promise<any> {
   return new Promise(async (rs, rj) => {
     const version_nube: string = await getVersionNube()
-      .then((version) => {
+      .then((data) => {
         // modalLoading.closeModal();
-        return version;
+        return data;
       })
       .catch((err) => {
         // modalLoading.closeModal();
       });
     const version_local: string = getVersionName();
-    const comparison = compareVersions(version_nube, version_local);
+    const comparison = compareVersions(version_nube['version'], version_local);
     if (comparison > 0) {
       if (forceUpdate) {
-        const modal: ModalUpdateIos = new ModalUpdateIos(message, okTextButton, NSBundle.mainBundle.bundleIdentifier, openAppStore);
+        const modal: ModalUpdateIos = new ModalUpdateIos(message, okTextButton, version_nube['appStoreID'], openAppStore);
         Application.ios.on(Application.iOSApplication.resumeEvent, async (args) => {
           const version_nube: string = await getVersionNube();
           const version_local: string = getVersionName();
@@ -94,7 +95,7 @@ export function checkUpdate(forceUpdate: boolean, okTextButton?: string, cancelT
         });
 
         getCurrentPage().showModal(modal, {
-          closeCallback(...args) {},
+          closeCallback(...args) { },
           context: null,
           animated: true,
           cancelable: false,
@@ -111,7 +112,8 @@ export function checkUpdate(forceUpdate: boolean, okTextButton?: string, cancelT
           okButtonText: okTextButton,
         }).then((res) => {
           if (res) {
-            openiOSStore(NSBundle.mainBundle.bundleIdentifier);
+            // openiOSStore(NSBundle.mainBundle.bundleIdentifier);
+            openiOSStore(version_nube['appStoreID']);
           }
         });
       }
@@ -138,8 +140,15 @@ function compareVersions(version1: string, version2: string): number {
 }
 
 function openiOSStore(id: string) {
-  const url: string = `itms-apps://itunes.apple.com/app/id${NSBundle.mainBundle.bundleIdentifier}`;
+  const url: string = `itms-apps://itunes.apple.com/app/id${id}?l=${NSLocale.currentLocale.countryCode}`;
   Utils.openUrl(url);
+}
+
+export function checkUpdateNative(): Promise<any> {
+  return new Promise<any>((rs, rj) => {
+    console.log('checkUpdateNative: only for Android');
+    rj(false);
+  });
 }
 
 class ModalLoading extends StackLayout {
@@ -190,7 +199,7 @@ class ModalUpdateIos extends GridLayout {
       this.addChild(this.btnActualizar);
     }
 
-    Application.ios.on(Application.iOSApplication.suspendEvent, (args) => {});
+    Application.ios.on(Application.iOSApplication.suspendEvent, (args) => { });
   }
 
   disposeNativeView(): void {

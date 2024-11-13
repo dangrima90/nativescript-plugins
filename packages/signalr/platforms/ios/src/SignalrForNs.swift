@@ -167,7 +167,8 @@ public class SignalrForNs:NSObject{
         }
     }
     
-    public func setSend(eventName:String,data:Any?){
+    public func setSend(eventName:String,data:Any?,completion: @escaping (Any)->Void){
+      print("setSend \(data)")
         var arguments: [Encodable] = []
         if let dataArray = data as? [Any] {
             for item in dataArray {
@@ -182,11 +183,13 @@ public class SignalrForNs:NSObject{
         }
 
         // Envía los argumentos como una lista de elementos 'Encodable'
-        signalr.send(method: eventName, arguments: arguments) { error in
+        signalr.invoke(method: eventName, arguments: arguments) { error in
             if let error = error {
 //                debugPrint("Error al enviar datos: \(error)")
+              completion(error)
             } else {
 //                debugPrint("Datos enviados con éxito para el evento: \(eventName)")
+              completion("OK invoke")
             }
         }
     }

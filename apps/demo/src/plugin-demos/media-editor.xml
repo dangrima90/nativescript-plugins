@@ -1,0 +1,9 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:me="@wuilmerj24/media-editor" navigatingTo="navigatingTo" class="page">
+    <Page.actionBar>
+        <ActionBar title="media-editor" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout>
+      <me:MediaEditor files="{{files}}"/>
+    </StackLayout>
+</Page>
