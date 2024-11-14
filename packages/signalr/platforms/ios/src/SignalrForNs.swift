@@ -168,21 +168,15 @@ public class SignalrForNs:NSObject{
     }
     
     public func setSend(eventName:String,data:Any?,completion: @escaping (Any)->Void){
-      print("setSend \(data)")
-        var arguments: [Encodable] = []
-        if let dataArray = data as? [Any] {
-            for item in dataArray {
-                // Intenta convertir cada elemento a un tipo que conforme a 'Encodable'
-                if let encodableItem = item as? Encodable {
-                    arguments.append(encodableItem)
-                }
-            }
-        } else if let encodableItem = data as? Encodable {
-            // Si 'data' no es un array, pero es 'Encodable', lo agrega directamente
-            arguments.append(encodableItem)
-        }
+      var arguments: [Encodable] = []
+      print("data \(data)")
+         
 
         // Envía los argumentos como una lista de elementos 'Encodable'
+      let jsonData = JSON(data ?? NSNull())
+      arguments.append(EncodableJSON(jsonData))
+
+      print("setSend \(arguments)")
         signalr.invoke(method: eventName, arguments: arguments) { error in
             if let error = error {
 //                debugPrint("Error al enviar datos: \(error)")
@@ -193,6 +187,7 @@ public class SignalrForNs:NSObject{
             }
         }
     }
+  
     
     public func startConn() {
         do {
@@ -299,3 +294,34 @@ struct DynamicData: Codable {
     }
 }
 
+struct EncodableJSON: Encodable {
+    private let json: JSON
+
+    init(_ json: JSON) {
+        self.json = json
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch json.type {
+        case .array:
+            try container.encode(json.arrayValue.map { EncodableJSON($0) })
+        case .dictionary:
+            try container.encode(json.dictionaryValue.mapValues { EncodableJSON($0) })
+        case .string:
+            try container.encode(json.stringValue)
+        case .number:
+            if let intValue = json.int {
+                try container.encode(intValue)
+            } else if let doubleValue = json.double {
+                try container.encode(doubleValue)
+            } else if let floatValue = json.float {
+                try container.encode(floatValue)
+            }
+        case .bool:
+            try container.encode(json.boolValue)
+        default:
+            try container.encodeNil()
+        }
+    }
+}

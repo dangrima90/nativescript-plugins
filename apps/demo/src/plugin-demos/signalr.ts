@@ -10,42 +10,24 @@ export function navigatingTo(args: EventData) {
 const signalr: Signalr = new Signalr();
 
 export async function connect() {
-  await signalr.createb({
-    url: 'http://eaconnectionmobile.azurewebsites.net/ServicesHub',
-    shouldSkipNegotiate: false,
-    headers: [{ name: 'Content-Type', value: 'application/json' }],
-    transport: TypeTransport.WEBSOCKETS,
-    reconnect: true,
-  }).subscribe({
-    next: (data: any) => {
-      console.log("next ",data)
+  await signalr
+    .create({
+      // url: 'http://eaconnectionmobile.azurewebsites.net/ServicesHub',
+      url: 'https://7c44-149-50-196-178.ngrok-free.app/testhub',
+      shouldSkipNegotiate: false,
+      headers: [{ name: 'Content-Type', value: 'application/json' }],
+      transport: TypeTransport.LONG_POLLING,
+      reconnect: true,
+    })
+    .then((res) => {
+      console.log('finish ', res);
       signalr.onClose(()=>{
         alert("se desconecto "+signalr.isConnected)
-        connect();
       })
-    },
-    error: (err: any) => console.error('Error:', err),
-    complete: () => {
-      console.log('finish ');
-    }
-  })
-  // await signalr
-  //   .create({
-  //     url: 'http://eaconnectionmobile.azurewebsites.net/ServicesHub',
-  //     shouldSkipNegotiate: false,
-  //     headers: [{ name: 'Content-Type', value: 'application/json' }],
-  //     transport: TypeTransport.WEBSOCKETS,
-  //     reconnect: true,
-  //   })
-  //   .then((res) => {
-  //     console.log('finish ', res);
-  //     signalr.onClose(()=>{
-  //       alert("se desconecto "+signalr.isConnected)
-  //     })
-  //   })
-  //   .catch((err) => {
-  //     console.log('error ', err);
-  //   });
+    })
+    .catch((err) => {
+      console.log('error ', err);
+    });
 }
 
 export async function desconectar() {
@@ -58,7 +40,9 @@ export async function getStaateConn() {
 }
 
 export async function invoke() {
-  signalr.emit('evento', null);
+  signalr.emit('evento', {
+    ids: ['ID_1', 'ID_2']
+  });
 }
 
 export async function ons() {

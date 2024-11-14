@@ -1,6 +1,6 @@
 {
   "name": "@wuilmerj24/store-update",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Add a plugin description",
   "main": "index",
   "types": "index.d.ts",
